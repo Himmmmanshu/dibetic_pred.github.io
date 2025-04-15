@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" 
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: 50px;
+            color: #0c5878;
+            text-align: center;
+        }
+        .form-group input {
+            width: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+        button {
+            width: 25%;
+            height: 40px;
+            padding: 5px;
+            margin: 10px auto;
+            font-size: 14px;
+            color: aqua;
+            display: block;
+        }
+        h2 {
+            font-family: "Georgia", cursive, sans-serif;
+            color: #000000;
+            font-size: 40px;
+            text-align: center;
+        }
+        .result {
+            font-size: 30px;
+            color: green;
+            font-weight: bold;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Diabetes Prediction Model</h1>
+        <form action="/predictdata" method="POST">
+            <div class="form-group">
+                <input type="number" class="form-control" name="Pregnancies" placeholder="Enter number of Pregnancies" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="Glucose" placeholder="Enter Glucose Level" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="BloodPressure" placeholder="Enter Blood Pressure" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="SkinThickness" placeholder="Enter Skin Thickness" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="Insulin" placeholder="Enter Insulin Level" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="BMI" step="0.1" placeholder="Enter BMI" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="DiabetesPedigreeFunction" step="0.01" placeholder="Enter Diabetes Pedigree Function" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="Age" placeholder="Enter Age" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 150px; height: 40px; margin: 10px auto; display: inline-block; color: white;">Predict</button>
+        </form>
+
+        {% if result %}
+            <h2 class="mt-4">The Predicted Result is:</h2>
+            <p class="result">{{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
